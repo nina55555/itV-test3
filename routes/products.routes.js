@@ -10,7 +10,6 @@ const {getProduct, getProducts,  postProduct, updateProduct, deleteProduct} = re
 //ROUTES
   
   
-  
   //get with an id
   router.get("/:id", getProduct);
 

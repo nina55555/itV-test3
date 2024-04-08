@@ -48,6 +48,8 @@ const getProducts = async (req, res) => {
       if (!product) {
         res.status(404).json({ message: "produit introuvable, cherchez mieux" });
       }
+
+
       //optionnel ?!
       const productUpdated = await Product.findById(id);
       //fin optionnel

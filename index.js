@@ -1,15 +1,21 @@
 
 //NEEDS
 const express = require("express");
+
 const mongoose = require("mongoose");
 const Product = require("./models/product.model.js");
-const productsRoutes = require('./routes/products.routes.js')
+const productsRoutes = require('./routes/products.routes.js');
 const path = require("path");
+
 const app = express();
 
 
 //DOTENV PASS CONFIGURATION
 require("dotenv").config( {path: "./.env"})
+
+
+//DB CONNECTION
+require('./config/dbconfig.js')
 
 
 //MIDDLEWARES
@@ -18,7 +24,6 @@ app.use(express.urlencoded({extended : false}));
 
 //ROUTE INITIALE GENERALE
 app.use("/api/products", productsRoutes)
-
 
 
 
@@ -32,17 +37,3 @@ app.listen(port, () => {
 
 
 
-
-//MONGODB CONNECTION 
-mongoose
-  .connect(
-    process.env.MONGODB_URL
-  )
-  .then(() => {
-    console.log("connected to database");
-
-    
-  })
-  .catch(() => {
-    console.log("connection to database failed");
-  });
